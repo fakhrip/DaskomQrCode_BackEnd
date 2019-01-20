@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('all_praktikan', 'PraktikanController@index');
+Route::get('all_praktikan/{id}', 'PraktikanController@show');
+Route::put('change_status', 'PraktikanController@store');
