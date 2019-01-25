@@ -20,15 +20,19 @@ class PraktikanController extends Controller
         return PraktikanResource::collection($all_praktikan);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store($nim)
     {
-        //
+        $praktikan = Praktikan::where('nim', $nim)->firstOrFail();
+
+        $praktikan->status = 1;
+
+        if($praktikan->save()){
+
+            return "Data saved successfully";
+        } else {
+
+            return "Something went wrong";
+        }
     }
 
     /**

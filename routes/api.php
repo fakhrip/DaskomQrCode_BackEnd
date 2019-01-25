@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('all_praktikan', 'PraktikanController@index');
 Route::get('all_praktikan/{id}', 'PraktikanController@show');
-Route::put('change_status', 'PraktikanController@store');
+Route::get('change_status/{nim}', 'PraktikanController@store');
