@@ -28,10 +28,10 @@ class PraktikanController extends Controller
 
         if($praktikan->save()){
 
-            return "Data saved successfully";
+            return new PraktikanResource($praktikan);
         } else {
 
-            return "Something went wrong";
+            return '{"response": "Failed to save data"}';
         }
     }
 
@@ -41,8 +41,10 @@ class PraktikanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nim)
     {
-        //
+        $praktikan = Praktikan::where('nim', $nim)->firstOrFail();
+
+        return new PraktikanResource($praktikan);
     }
 }
